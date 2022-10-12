@@ -38,5 +38,6 @@ for i in range(len(dailySums)):
     matplotlib.pyplot.plot(dailySums[i], label=1959 + i)
         
 #matplotlib.pyplot.legend()
+#petite modification
 matplotlib.pyplot.show()
         
