@@ -8,7 +8,9 @@ counterYears = 0
 newYear = []
 dailySums = []
 
-with open('liege_1959_2021.csv', newline='') as csvfile:
+csvPath = 'liege_1959_2021.csv'
+
+with open(csvPath, newline='') as csvfile:
     rainReader = csv.reader(csvfile)
     for row in rainReader:
         workingYear = year
@@ -38,6 +40,5 @@ for i in range(len(dailySums)):
     matplotlib.pyplot.plot(dailySums[i], label=1959 + i)
         
 #matplotlib.pyplot.legend()
-#petite modification
 matplotlib.pyplot.show()
         
