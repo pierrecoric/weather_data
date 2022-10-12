@@ -2,15 +2,17 @@ import csv
 import matplotlib.pyplot
 
 sumPrecipitation = 0.0
+allTimePrecipitation = 0.0
 year = '1959'
 day = '01'
 counterYears = 0
 newYear = []
 dailySums = []
+allTimesum = []
 
-csvPath = 'liege_1959_2021.csv'
+csvFile = 'marrakesh_1959_2021.csv'
 
-with open(csvPath, newline='') as csvfile:
+with open(f'data/{csvFile}', newline='') as csvfile:
     rainReader = csv.reader(csvfile)
     for row in rainReader:
         workingYear = year
@@ -26,19 +28,26 @@ with open(csvPath, newline='') as csvfile:
             hourlyPrecipitaion = 0
         hourlyPrecipitaion = float(hourlyPrecipitaion)
         sumPrecipitation += hourlyPrecipitaion
+        allTimePrecipitation += hourlyPrecipitaion
         workingDay = day
         day = (row[0][8:10])
         #append sum for each new day:
         if day != workingDay:
             newYear.append(sumPrecipitation)
+            allTimesum.append(allTimePrecipitation)
 
-print(len(dailySums))
+def yearlySum():
+    for i in range(len(dailySums)):
+        sumYear = dailySums[i][len(dailySums[i])-1]
+        print(f'{i+1959} - {sumYear}')
+        matplotlib.pyplot.plot(dailySums[i], label=1959 + i)
+    matplotlib.pyplot.show()
 
-for i in range(len(dailySums)):
-    sumYear = dailySums[i][len(dailySums[i])-1]
-    print(f'{i+1959} - {sumYear}')
-    matplotlib.pyplot.plot(dailySums[i], label=1959 + i)
-        
-#matplotlib.pyplot.legend()
-matplotlib.pyplot.show()
+def allTimeSum():
+    matplotlib.pyplot.plot(allTimesum)
+    matplotlib.pyplot.show()
+
+
+
+allTimeSum()
         
