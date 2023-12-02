@@ -3,7 +3,6 @@ import matplotlib.pyplot
 import math
 import collections
 
-
 sumPrecipitation = 0.0
 allTimePrecipitation = 0.0
 year = '1959'
